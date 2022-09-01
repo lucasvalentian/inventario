@@ -79,7 +79,7 @@
                                <div class="col-md-6">
                                <input type="hidden" id="codigo_unico_producto">
 
-                                    <h3 tyle="font-size:14px ;">Seleccionar Tipo de busquedad:</h3>
+                                    <h3 tyle="font-size:14px ;">Seleccionar Tipo de busqueda:</h3>
                                     <label class="container" tyle="font-size:14px;">Codigo de Barras
                                             <input type="radio" checked="checked" id="radio_barrar" name="radio">
                                             <span class="checkmark"></span>
@@ -103,10 +103,11 @@
                                </div>
                                <div class="col-md-6">
                                 <br><br><br>
+                                <p><label for="">Empaque Master</label><input placeholder="Empq. Mast." disabled id="empaque"  name="email"></p>
+                                 <p><label for="">Cantidad Master</label><strong style="color:red"> (Campo Obligatorio(*))</strong><input placeholder="Cantidad en Master" id="cantidad_master" class="obligatorio" name="phone"></p>
                                <p><label for="">Unidad de Venta</label><input placeholder="Unidad de Medida" disabled id="unidad_minima"  name="email"></p>
                                 <p><label for="">Cantidad en Unidades </label><strong style="color:red">(Campo Obligatorio(*))</strong><input placeholder="Cantidad en Unidades" id="cantidad_minima" class="obligatorio"  name="email"></p>
-                                 <p><label for="">Empaque Master</label><input placeholder="Empq. Mast." disabled id="empaque"  name="email"></p>
-                                 <p><label for="">Cantidad Master</label><strong style="color:red"> (Campo Obligatorio(*))</strong><input placeholder="Cantidad en Master" id="cantidad_master" class="obligatorio" name="phone"></p>
+
                                  <div style="float:right;"> <button type="button" id="nextBtn">Guardar</button> </div>
 
                                </div>
