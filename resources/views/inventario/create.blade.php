@@ -103,6 +103,8 @@
                                </div>
                                <div class="col-md-6">
                                 <br><br><br>
+                                <div id="qr-reader" style="width: 600px"></div>
+                                <p><input type="text" class="form-control" id="captura"></p>
                                 <p><label for="">Empaque Master</label><input placeholder="Empq. Mast." disabled id="empaque"  name="email"></p>
                                  <p><label for="">Cantidad Master</label><strong style="color:red"> (Campo Obligatorio(*))</strong><input placeholder="Cantidad en Master" id="cantidad_master" class="obligatorio" name="phone"></p>
                                <p><label for="">Unidad de Venta</label><input placeholder="Unidad de Medida" disabled id="unidad_minima"  name="email"></p>
@@ -182,6 +184,7 @@
         <script src="assets/libs/twitter-bootstrap-wizard/prettify.js"></script>
 
 <script src="assets/js/pages/form-wizard.init.js"></script>
+<script src="https://unpkg.com/html5-qrcode@2.0.9/dist/html5-qrcode.min.js"></script>
 
 <script src="{{asset('js/crear.js')}}"></script>
 
