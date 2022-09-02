@@ -43,6 +43,7 @@
                                 <th>#</th>
                                 <th>Nombre</th>
                                 <th>Email</th>
+                                <th>Usuario</th>
                                 <th>Alamacen</th>
 
                                 <th width="280px">Action</th>
@@ -56,6 +57,7 @@
                                   <td>{{ ++$i }}</td>
                                   <td>{{ $user->name }}</td>
                                   <td>{{ $user->email }}</td>
+                                  <td>{{ $user->username }}</td>
 
                                     <td>
 
