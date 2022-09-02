@@ -13,13 +13,13 @@ window.addEventListener("load", function (event) {
 
   });
 
-  function onScanSuccess(decodedText, decodedResult) {
+  /*function onScanSuccess(decodedText, decodedResult) {
     console.log(`Code scanned = ${decodedText}`, decodedResult);
     $("#captura").val(`${decodedText}`, decodedResult);
 }
 var html5QrcodeScanner = new Html5QrcodeScanner(
 	"qr-reader", { fps: 10, qrbox: 250 });
-html5QrcodeScanner.render(onScanSuccess);
+html5QrcodeScanner.render(onScanSuccess);*/
 
 
 
@@ -30,7 +30,7 @@ html5QrcodeScanner.render(onScanSuccess);
         $("#barrar").show();
         $("#barrar").val('');
         $("#codigo_unico_producto").val("");
-            $("#cantidad_minima").val("");
+            $("#cantidad_minima").val("0");
            $("#cantidad_master").val("");
            $("#codigo_barras").val("");
            $("#producto").val("");
@@ -41,7 +41,7 @@ html5QrcodeScanner.render(onScanSuccess);
         $("#barrar").hide();
         $("#busquedad").val('');
         $("#codigo_unico_producto").val("");
-        $("#cantidad_minima").val("");
+        $("#cantidad_minima").val("0");
        $("#cantidad_master").val("");
        $("#codigo_barras").val("");
        $("#producto").val("");
@@ -56,7 +56,7 @@ html5QrcodeScanner.render(onScanSuccess);
         $("#barrar").hide();
         $("#busquedad").val('');
         $("#codigo_unico_producto").val("");
-        $("#cantidad_minima").val("");
+        $("#cantidad_minima").val("0");
        $("#cantidad_master").val("");
        $("#codigo_barras").val("");
        $("#producto").val("");
@@ -67,7 +67,7 @@ html5QrcodeScanner.render(onScanSuccess);
         $("#barrar").show();
         $("#barrar").val('');
         $("#codigo_unico_producto").val("");
-        $("#cantidad_minima").val("");
+        $("#cantidad_minima").val("0");
        $("#cantidad_master").val("");
        $("#codigo_barras").val("");
        $("#producto").val("");

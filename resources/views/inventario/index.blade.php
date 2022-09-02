@@ -92,6 +92,7 @@
                                     <th>Unidad Master</th>
                                     <th>Cantidad Master Contadas</th>
                                     <th>Fecha/Hora</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody id="productos">
@@ -106,7 +107,59 @@
     </div>
 
 
+    <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="myExtraLargeModalLabel">Editar Linea</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                         <div class="row">
+                                                            <input type="hidden" id="id_inventario">
+                                                            <input type="hidden" id="id_producto">
+                                                             <div class="col-lg-12">
+                                                             <label for="">Codio Economysa</label>
+                                                             <input type="text" class="form-control" id="cod_economysa" disabled >
 
+                                                             <label for="">Producto</label>
+                                                             <input type="text" class="form-control" id="producto" disabled >
+
+                                                             <label for="">Codio Barras</label>
+                                                             <input type="text" class="form-control" id="barras" disabled >
+                                                             <label for="">Empaque Master</label>
+                                                             <input type="text" class="form-control" id="empmaster" disabled >
+                                                             <label for="">Cantidad Master</label>
+                                                             <input type="text" class="form-control obligatorio" id="can_master"  >
+                                                             <label for="">Unidad de Venta</label>
+                                                             <input type="text" class="form-control " id="empmaster_unidad" disabled >
+                                                             <label for="">Cantidad en Unidades</label>
+                                                             <input type="text" class="form-control obligatorio" id="can_unidades"  >
+
+
+
+
+
+                                                             </div>
+
+                                                         </div>
+
+                                                         <br><br>
+
+
+                                                         <div class="pull-right">
+                                                                       <button class="btn btn-primary" id="actualizar">Guardar</button>
+
+                                                                </div>
+
+
+
+
+                                                        </div>
+
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal-dialog -->
+                                            </div><!-- /.modal -->
 
 
 

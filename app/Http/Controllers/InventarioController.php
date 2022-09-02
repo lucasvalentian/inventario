@@ -41,7 +41,7 @@ class InventarioController extends Controller
             $productos=DB::table('inventario as i')
             ->join('productos as p','p.id','=','i.id_producto')
             ->join('almacen as al','al.id','=','i.id_almacen')
-            ->select('al.id','al.almacen','p.producto','p.codigo_barras','p.undpresenta','i.stock_unidades','p.empaquevta',
+            ->select('i.id','al.id as id_almacen','al.almacen','p.producto','p.codigo_barras','p.undpresenta','i.stock_unidades','p.empaquevta',
                 'i.stock_master','i.fecha_prevista','i.hora','p.codart')
             ->where('i.id_usuario','=',$user->id)
             ->get();
@@ -98,7 +98,7 @@ class InventarioController extends Controller
 
         $inventario->save();
         return response()->json($inventario);
-        print_r('');exit();
+        //print_r('');exit();
 
 
 
@@ -127,9 +127,23 @@ class InventarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editar($id)
     {
         //
+        $user = Auth::user();
+
+            $productos=DB::table('inventario as i')
+            ->join('productos as p','p.id','=','i.id_producto')
+            ->join('almacen as al','al.id','=','i.id_almacen')
+            ->select('i.id','al.id as id_almacen','al.almacen','p.producto','p.codigo_barras','p.undpresenta','i.stock_unidades','p.empaquevta',
+                'i.stock_master','i.fecha_prevista','i.hora','p.codart','p.id  as id_producto')
+            ->where('i.id','=',$id)
+            ->first();
+
+            return response()->json($productos);
+
+
+
     }
 
     /**
@@ -139,9 +153,33 @@ class InventarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+
+        $user = Auth::user();
+
+        $inventario=Inventario::find($request->id);
+        $inventario->concepto='Saldo Inicial';
+        $inventario->id_almacen=$user->id_almacen;
+        $inventario->tipo_operacion='Conteo Economysa';
+        $inventario->id_producto=$request->id_producto;
+        $inventario->stock_unidades=$request->stock_unidades;
+        $inventario->stock_master=$request->stock_master;
+        $inventario->fecha_prevista=Date('Y-m-d');
+        $inventario->hora=date("H:i:s");
+        $inventario->id_usuario=$user->id;
+        $inventario->nombre=$user->name;
+        $inventario->save();
+
+        return response()->json($inventario);
+
+
+
+
+
+
+
     }
 
     /**
@@ -150,8 +188,10 @@ class InventarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function eliminar($id)
     {
-        //
-    }
+        Inventario::find($id)->delete();
+        return response()->json('OK');
+
+     }
 }

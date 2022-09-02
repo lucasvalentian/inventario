@@ -26,4 +26,7 @@ Route::get('inventario/contenido', 'InventarioController@contenido');
 Route::get('inventario/listarproductos', 'InventarioController@listarproductos');
 Route::get('inventario/codigo_barras/{codigo}', 'InventarioController@codigo_barras');
 Route::post('inventario/crear','InventarioController@crear');
+Route::get('inventario/editar/{id}','InventarioController@editar');
+Route::post('inventario/modificar','InventarioController@update');
+Route::delete('inventario/eliminar/{id}','InventarioController@eliminar');
 Route::resource('inventario','InventarioController');
