@@ -94,7 +94,7 @@ function productos(){
             contenido += "<tr>";
             contenido += "<td style='padding:1px;text-align:center' id='codigo"+data[i].id+"'>" + data[i].codart  + "</td>";
             contenido += "<td style='padding:1px;text-align:center' id='producto"+data[i].id+"'>" + data[i].producto  + "</td>";
-            contenido += "<td style='padding:1px;text-align:center' id='barras"+data[i].id+"'>" + data[i].codigo_barras  + " <input type='hidden' id='undpresenta"+data[i].id+"' value='"+data[i].undpresenta+"'>  <input type='hidden' id='empaquecompra"+data[i].id+"' value='"+data[i].empaquecompra+"'> </td>";
+            contenido += "<td style='padding:1px;text-align:center' id='barras"+data[i].id+"'>" + data[i].codigo_barras  + " <input type='hidden' id='undpresenta"+data[i].id+"' value='"+data[i].undpresenta+"'>  <input type='hidden' id='empaquecompra"+data[i].id+"' value='"+data[i].empaquecompra+"'> <input type='hidden' id='upreoriginal"+data[i].id+"' value='"+data[i].upreoriginal+"'></td>";
             contenido += "<td style='padding:1px;text-align:center'>";
 
             contenido +='<a href="#" onclick="seleccionar('+data[i].id+')" type="button" class="btn btn-success "><i class="bx bxs-show label-icon"></i> Seleccionar </a>';
@@ -164,7 +164,7 @@ $("#buscode").on("click",function(){
            $("#codigo_unico_producto").val(data[0].id);
            Swal.fire({
                icon: 'success',
-               title: 'Oops...',
+               title: '...',
                text: 'Producto Seleccionado Correctamente!! Ingrese los campos faltantes',
                footer: ''
            })
@@ -173,7 +173,7 @@ $("#buscode").on("click",function(){
 
            Swal.fire({
                icon: 'error',
-               title: 'Oops...',
+               title: '..',
                text: 'Lo siento no se encontro ningun producto relacionado!',
                footer: ''
              })
@@ -203,13 +203,28 @@ function seleccionar(id){
       $("#unidad_minima").val($("#undpresenta"+id).val());
       $("#empaque").val($("#empaquecompra"+id).val());
       $("#codigo_unico_producto").val(id);
+      let cantidad=$("#upreoriginal"+id).val();
+
+
+      if(cantidad==1){
+
+        $("#ocultar").hide();
+
+      }else{
+
+        $("#ocultar").show();
+
+      }
+
+
 
       $("#modal_almacen").modal("hide");
 
 
+
     Swal.fire({
         icon: 'success',
-        title: 'Oops...',
+        title: '...',
         text: 'Producto Seleccionado Correctamente!! Ingrese los campos faltantes',
         footer: ''
     })

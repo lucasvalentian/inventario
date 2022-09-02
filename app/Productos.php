@@ -18,7 +18,7 @@ class Productos extends Model
                           'empaquevta','undpresenta','estado_articulo','estado_compra','estado_venta','peso','art_unimed',
                           'volumen','preciovta','preciocompra','tipoigv','igv',
                           'unidad_sunat','codigo_compra_proveedor','codigo_barras','create_date','write_date','write_uid'
-                          ,'cod_odoo','conver_master_unidad'
+                          ,'cod_odoo','conver_master_unidad','unidad_conversion'
                 ];
 
 

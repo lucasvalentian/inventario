@@ -78,6 +78,7 @@
 
                             </tbody>
                         </table>
+                        {!! $datos->render() !!}
                    </div>
 
 

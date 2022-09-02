@@ -140,6 +140,9 @@ class InventarioController extends Controller
            $ultimo=$inicializador->last();
            $info=$this->impedir($user->id_almacen);
 
+           $conversion=$this->conversion($request->id_producto);
+
+
           if($info==1){
 
             return response()->json('error');
@@ -160,6 +163,7 @@ class InventarioController extends Controller
             $inventario->nombre=$user->name;
             $inventario->id_conteo=$ultimo->id;
             $inventario->conteo=$ultimo->contador;
+            $inventario->conversion_unidad=($conversion*$request->stock_master)+$request->stock_unidades;
             $inventario->save();
 
             //print_r('');exit();
@@ -173,6 +177,16 @@ class InventarioController extends Controller
 
 
 
+
+
+    }
+
+    //FUNCIONA PARA LA CONVERSION
+    public function conversion($cod_producto){
+
+        $productos=Productos::find($cod_producto)->first();
+
+        return $productos->unidad_conversion;
 
 
     }
