@@ -30,3 +30,13 @@ Route::get('inventario/editar/{id}','InventarioController@editar');
 Route::post('inventario/modificar','InventarioController@update');
 Route::delete('inventario/eliminar/{id}','InventarioController@eliminar');
 Route::resource('inventario','InventarioController');
+
+///METODO DE LOS CONTEOS
+//Route::get('conteo/almacenes', 'InventarioController@contenido');
+Route::get('conteo/listado', 'ConteoController@listado');
+Route::get('conteo/almacenes', 'ConteoController@almacenes');
+Route::get('conteo/editar/{id}', 'ConteoController@editar');
+Route::get('conteo/conexion/{id}', 'ConteoController@conexion');
+Route::post('conteo/modificar','ConteoController@update');
+Route::post('conteo/crear','ConteoController@crear');
+Route::resource('conteo','ConteoController');

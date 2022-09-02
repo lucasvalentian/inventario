@@ -162,7 +162,7 @@ $("#actualizar").on("click",function(){
               frm.append("stock_unidades", stock_unidades);
               frm.append("stock_master", stock_master);
               frm.append("id_producto", id_producto);
-              alert(stock_unidades+"  "+stock_master+"  "+id);
+             // alert(stock_unidades+"  "+stock_master+"  "+id);
 
               $.ajax({
                 type: "POST",
@@ -294,7 +294,7 @@ function seleccionar(id){
 
 //funcion para cargar los productos
 function eliminarsector(id){
-    alert(id);
+    //alert(id);
 
     const tabla = document.getElementById('dataTableExample');
 

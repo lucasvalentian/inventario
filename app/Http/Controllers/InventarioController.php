@@ -9,6 +9,7 @@ use App\Almacen;
 use Illuminate\Support\Facades\Date;
 use Symfony\Component\VarDumper\Cloner\Data;
 use Illuminate\Support\Facades\Auth;
+use App\Conteo;
 
 class InventarioController extends Controller
 {
@@ -66,8 +67,56 @@ class InventarioController extends Controller
     public function create()
     {
         //
-        return view('inventario.create');
+        $user = Auth::user();
+
+
+             $condicion='';
+             $contador=0;
+             $user = Auth::user();
+
+
+            $inicializador=DB::table('conteo as c')
+            ->join('almacen as a','a.id','=','c.id_almacen')
+            ->select('c.id','a.almacen','c.contador','c.hora','c.fecha','c.estado','c.id_almacen','c.hora_fin','c.fecha_fin',
+               'c.id_usuario','c.usuario')
+               //->where('c.id_usuario','=',$user->id)
+               //->where('c.estado','=',0)
+               ->where('a.id','=',$user->id_almacen)
+               //->orderBy('id','desc')
+               ->get();
+
+               $ultimo=$inicializador->last();
+
+
+
+
+               if($ultimo==null){
+                  $condicion=4;
+
+               }else if($ultimo->estado==1){
+
+                      $condicion=$ultimo->estado;
+                      $contador=$contador+$ultimo->contador;
+
+               }else{
+
+                        $condicion=0;
+                        $contador=$ultimo->contador;
+               }
+
+               //print_r($condicion);exit();
+
+
+
+
+
+
+        return view('inventario.create',compact('condicion','contador'));
     }
+
+    //METODO PARA IMPEDIR GUARDAR LA INFORMACION
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -79,36 +128,94 @@ class InventarioController extends Controller
     {
         //
 
-
-
         $user = Auth::user();
+        $inicializador=DB::table('conteo as c')
+        ->join('almacen as a','a.id','=','c.id_almacen')
+        ->select('c.id','a.almacen','c.contador','c.hora','c.fecha','c.estado','c.id_almacen','c.hora_fin','c.fecha_fin',
+           'c.id_usuario','c.usuario')
+           ->where('a.id','=',$user->id_almacen)
+           ->where('c.estado','=',0)
+           ->get();
 
-        $inventario=new Inventario;
-        $inventario->concepto='Saldo Inicial';
-        $inventario->id_almacen=$user->id_almacen;
-        $inventario->tipo_operacion='Conteo Economysa';
-        $inventario->id_producto=$request->id_producto;
-        $inventario->stock_unidades=$request->stock_unidades;
-        $inventario->stock_master=$request->stock_master;
-        $inventario->fecha_prevista=Date('Y-m-d');
-        $inventario->hora=date("H:i:s");
-        $inventario->id_usuario=$user->id;
-        $inventario->nombre=$user->name;
+           $ultimo=$inicializador->last();
+           $info=$this->impedir($user->id_almacen);
 
+          if($info==1){
 
-        $inventario->save();
-        return response()->json($inventario);
-        //print_r('');exit();
+            return response()->json('error');
 
 
+          }else{
 
-        return response()->json('OK');
+            $inventario=new Inventario;
+            $inventario->concepto='Saldo Inicial';
+            $inventario->id_almacen=$user->id_almacen;
+            $inventario->tipo_operacion='Conteo Economysa';
+            $inventario->id_producto=$request->id_producto;
+            $inventario->stock_unidades=$request->stock_unidades;
+            $inventario->stock_master=$request->stock_master;
+            $inventario->fecha_prevista=Date('Y-m-d');
+            $inventario->hora=date("H:i:s");
+            $inventario->id_usuario=$user->id;
+            $inventario->nombre=$user->name;
+            $inventario->id_conteo=$ultimo->id;
+            $inventario->conteo=$ultimo->contador;
+            $inventario->save();
+
+            //print_r('');exit();
+
+           return response()->json('OK');
+
+
+
+          }
+
 
 
 
 
 
     }
+
+    public function impedir($almacen){
+
+        $condicion='';
+        $contador=0;
+        $user = Auth::user();
+
+
+        $inicializador=DB::table('conteo as c')
+        ->join('almacen as a','a.id','=','c.id_almacen')
+        ->select('c.id','a.almacen','c.contador','c.hora','c.fecha','c.estado','c.id_almacen','c.hora_fin','c.fecha_fin',
+            'c.id_usuario','c.usuario')
+            //->where('c.id_usuario','=',$user->id)
+            //->where('c.estado','=',0)
+            ->where('a.id','=',$user->id_almacen)
+            //->orderBy('id','desc')
+            ->get();
+
+        $ultimo=$inicializador->last();
+
+
+
+
+        if($ultimo==null){
+            $condicion=4;
+
+        }else if($ultimo->estado==1){
+
+                $condicion=$ultimo->estado;
+                $contador=$contador+$ultimo->contador;
+
+        }else{
+
+                $condicion=0;
+                $contador=$ultimo->contador;
+        }
+
+        return $condicion;
+
+}
 
     /**
      * Display the specified resource.
@@ -145,6 +252,7 @@ class InventarioController extends Controller
 
 
     }
+    //FUNCION PARA MOSTRAR EL CONTEO EN LA LINEA
 
     /**
      * Update the specified resource in storage.
@@ -157,7 +265,19 @@ class InventarioController extends Controller
     {
         //
 
+        //return response()->json('hola');
+
         $user = Auth::user();
+        $inicializador=DB::table('conteo as c')
+        ->join('almacen as a','a.id','=','c.id_almacen')
+        ->select('c.id','a.almacen','c.contador','c.hora','c.fecha','c.estado','c.id_almacen','c.hora_fin','c.fecha_fin',
+           'c.id_usuario','c.usuario')
+           ->where('a.id','=',$user->id_almacen)
+           ->where('c.estado','=',0)
+           ->get();
+
+           $ultimo=$inicializador->last();
+
 
         $inventario=Inventario::find($request->id);
         $inventario->concepto='Saldo Inicial';
@@ -170,6 +290,8 @@ class InventarioController extends Controller
         $inventario->hora=date("H:i:s");
         $inventario->id_usuario=$user->id;
         $inventario->nombre=$user->name;
+        $inventario->id_conteo=$ultimo->id;
+        $inventario->conteo=$ultimo->contador;
         $inventario->save();
 
         return response()->json($inventario);

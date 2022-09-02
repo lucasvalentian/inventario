@@ -78,7 +78,11 @@ html5QrcodeScanner.render(onScanSuccess);*/
 //  contenido += "<td style='padding:1px;text-align:center' id='predio"+data[i].id_predio+"'>" + data[i].id_predio + " <input type='hidden' id='id_sector"+data[i].id_predio+"' value='"+data[i].id+"'></td>";
 function productos(){
 
+
+
     $.get(urlgeeneral+"/inventario/contenido",function(data){
+
+        $(".loader").fadeOut("slow");
 
         let contenido="";
         for (var i = 0; i < data.length; i++) {
@@ -231,15 +235,33 @@ $("#nextBtn").on("click",function(){
                 success: function (data) {
 
                     console.log(data);
+
+                    if(data=="error")
+                    {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'No podemos registrar el stock porque el conteo ya fue Cerrado!',
+                                footer: ''
+                            })
+
+                    }else{
+
+                        console.log(data);
                     location.href =urlgeeneral+"/inventario";
 
 
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Oops...',
-                    text: 'Creado Correctamente',
-                    footer: ''
-                })
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Oops...',
+                            text: 'Creado Correctamente',
+                            footer: ''
+                        })
+
+
+                    }
+
+
 
                     //listarbeneficiario();
                     //$('#staticBackdrop').modal('hide');

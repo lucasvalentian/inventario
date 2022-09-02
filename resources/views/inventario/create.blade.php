@@ -76,8 +76,31 @@
                             <div class="card-body">
 
                             <div class="row">
+                                <h1>
+
+                                @if($condicion==1)
+                                        CONTEO CERRADO  N° {{$contador}}
+                                @elseif($condicion==4)
+                                     CONTEO AUN NO INICIALIZADO
+                                  @else
+                                  INICIALIZACION DE CONTEO : N° {{$contador}}
+
+                                @endif
+
+
+
+
+
+
+
+
+
+
+
+                                </h1>
                                <div class="col-md-6">
                                <input type="hidden" id="codigo_unico_producto">
+
 
                                     <h3 tyle="font-size:14px ;">Seleccionar Tipo de busqueda:</h3>
                                     <label class="container" tyle="font-size:14px;">Codigo de Barras
