@@ -61,14 +61,16 @@ class UserControllerController extends Controller
         //
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email',
+            //'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
             'id_almacen' => 'required',
+            'username' => 'required',
         ]);
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $input['id_almacen']=$request->id_almacen;
+        $input['username']=$request->username;
 
 
 
@@ -130,6 +132,7 @@ class UserControllerController extends Controller
         }
 
         $input['id_almacen']=$request->id_almacen;
+        $input['username']=$request->username;
         $user = User::find($id);
         $user->update($input);
         $user->save($input);
