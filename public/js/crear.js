@@ -1,5 +1,6 @@
 urlgeeneral=$("#url_raiz_proyecto").val();
 $("#busquedad").hide();
+$("#buscode").show();
 var radio_barrar = document.getElementById('radio_barrar');
 var radio_produto = document.getElementById('radio_produto');
 
@@ -35,6 +36,7 @@ html5QrcodeScanner.render(onScanSuccess);*/
            $("#codigo_barras").val("");
            $("#producto").val("");
            $("#empaque").val("");
+           $("#buscode").show();
 
     } else {
         $("#busquedad").show();
@@ -46,6 +48,7 @@ html5QrcodeScanner.render(onScanSuccess);*/
        $("#codigo_barras").val("");
        $("#producto").val("");
        $("#empaque").val("");
+       $("#buscode").hide();
     }
   });
 
@@ -61,6 +64,7 @@ html5QrcodeScanner.render(onScanSuccess);*/
        $("#codigo_barras").val("");
        $("#producto").val("");
        $("#empaque").val("");
+       $("#buscode").hide();
     } else {
 
         $("#busquedad").hide();
@@ -72,6 +76,7 @@ html5QrcodeScanner.render(onScanSuccess);*/
        $("#codigo_barras").val("");
        $("#producto").val("");
        $("#empaque").val("");
+       $("#buscode").show();
     }
   });
 
@@ -141,42 +146,51 @@ function inventariado(){
 
 
 //METODO PARA LLAMAR DATOS POR EL CODIGO DE BARRAS
+
+$("#buscode").on("click",function(){
+
+    //alert("hola");
+
+    let barrar=$("#barrar").val();
+
+    $.get(urlgeeneral+"/inventario/codigo_barras/"+barrar,function(data){
+
+       if(data.length>0){
+
+           $("#producto").val(data[0].producto);
+           $("#codigo_barras").val(data[0].codigo_barras);
+           $("#unidad_minima").val(data[0].undpresenta);
+           $("#empaque").val(data[0].empaquevta);
+           $("#codigo_unico_producto").val(data[0].id);
+           Swal.fire({
+               icon: 'success',
+               title: 'Oops...',
+               text: 'Producto Seleccionado Correctamente!! Ingrese los campos faltantes',
+               footer: ''
+           })
+
+       }else{
+
+           Swal.fire({
+               icon: 'error',
+               title: 'Oops...',
+               text: 'Lo siento no se encontro ningun producto relacionado!',
+               footer: ''
+             })
+
+       }
+
+
+
+
+    });
+
+
+
+})
 $("#barrar").on("keyup",function(){
 
 
-       let barrar=$("#barrar").val();
-
-         $.get(urlgeeneral+"/inventario/codigo_barras/"+barrar,function(data){
-
-            if(data.length>0){
-
-                $("#producto").val(data[0].producto);
-                $("#codigo_barras").val(data[0].codigo_barras);
-                $("#unidad_minima").val(data[0].undpresenta);
-                $("#empaque").val(data[0].empaquevta);
-                $("#codigo_unico_producto").val(data[0].id);
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Oops...',
-                    text: 'Producto Seleccionado Correctamente!! Ingrese los campos faltantes',
-                    footer: ''
-                })
-
-            }else{
-
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Lo siento no se encontro ningun producto relacionado!',
-                    footer: ''
-                  })
-
-            }
-
-
-
-
-         });
 
 });
 

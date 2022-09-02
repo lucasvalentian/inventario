@@ -112,12 +112,21 @@
                                             <span class="checkmark"></span>
                                     </label>
                                     <p><input type="text" placeholder="Busqueda" id="busquedad" oninput="this.className = ''" name="Busqueda"></p>
-                                    <p><input type="text" placeholder="Codigo de Barras" id="barrar" oninput="this.className = ''" name="barrar"></p>
+                                    <p><input type="text" placeholder="Codigo de Barras" id="barrar" oninput="this.className = ''" name="barrar">
+                                    <br><br>
+                                    <button id="buscode">Buscar</button>
+
+                                </p>
 
 
 
                                     <p><label for="">Nombre del Producto</label><input placeholder="Nombre del Producto" disabled id="producto"  name="first"></p>
-                                    <p><label for="">Codigo de Barras</label><input placeholder="Codigo de Barras" disabled id="codigo_barras"  name="last"></p>
+                                    <p><label for="">Codigo de Barras</label><input placeholder="Codigo de Barras" disabled id="codigo_barras"  name="last">
+
+
+                                    </p>
+
+
 
 
 
