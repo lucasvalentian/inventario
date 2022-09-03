@@ -12,6 +12,6 @@ class Resumen_conteo extends Model
     protected $primarykey='id';
     public $timestamps=false;
     protected $fillable=['id_alamcen','conteo','id_producto','total_unidades',
-    'condicion'];
+    'condicion','llave','diferencia'];
 
 }

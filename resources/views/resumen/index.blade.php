@@ -43,10 +43,24 @@
                         </select>
 
                     </div>
+                    <div class="col-md-3">
+
+                       <label for="">Seleccionar conteo Inicial</label>
+                        <select name="" id="conteo_dos" class="form-control">
+
+                        </select>
+
+                    </div>
+                    <div class="col-md-3">
+                        <br>
+                       <button type="button" class="btn btn-success waves-effect btn-label waves-light"  onclick="procesar()" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bx bx-plus label-icon"></i> Inicializar Comparación</button>
 
                     </div>
 
-                <button type="button" class="btn btn-success waves-effect btn-label waves-light"  onclick="abrimodal(0)" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bx bx-plus label-icon"></i> Inicializar Comparación</button>
+
+                    </div>
+
+
 
                 </div>
 
@@ -59,6 +73,35 @@
 
 
 
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                 <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content" >
+                             <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Generando Comparación de Conteo</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                             </div>
+                        <div class="modal-body">
+
+                        <div class="row">
+
+
+                                                      <div class="col-lg-2 col-xs-12"></div>
+                                                      <div class="col-lg-8 col-xs-12">
+
+                                                      <img src="{{asset('img/loader-meta.gif')}}" style=""  alt="" class="" width="100%" >
+                                                            <h4 style="text-align: center;color:#BA4A00">Espere Porfovar Mientras se general la comparación...</h4>
+                                                            <p style="text-align: center;color:#BA4A00">Mientras tanto tome una tasa de cafe <i class=" fas fa-coffee"></i></p>
+
+                                                      </div>
+                                                      <div class="col-lg-2 col-xs-12"></div>
+
+                                                  </div>
+
+                        </div>
+
+                    </div>
+                 </div>
+        </div>
 
 
 
