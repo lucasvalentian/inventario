@@ -53,7 +53,7 @@ class InventarioController extends Controller
             ->select('i.id','al.id as id_almacen','al.almacen','p.producto','p.codigo_barras','p.undpresenta','i.stock_unidades','p.empaquevta',
                 'i.stock_master','i.fecha_prevista','i.hora','p.codart','i.conteo')
             ->where('i.id_usuario','=',$user->id)
-            //->where('i.conteo','=',2)
+            ->where('i.conteo','=',2)
             ->get();
 
             return response()->json($productos);
