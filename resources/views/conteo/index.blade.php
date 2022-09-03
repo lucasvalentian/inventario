@@ -1,6 +1,4 @@
 @extends('layouts.admin')
-
-
 @section('title')
   Conteo
 @endsection

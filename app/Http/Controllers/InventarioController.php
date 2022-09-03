@@ -170,6 +170,8 @@ class InventarioController extends Controller
             $inventario->id_conteo=$ultimo->id;
             $inventario->conteo=$ultimo->contador;
             $inventario->conversion_unidad=($conversion*$request->stock_master)+$request->stock_unidades;
+            $inventario->fecha_vencimiento=$request->fecha_vencimiento;
+            $inventario->observacion=$request->observacion;
 
 
 
@@ -192,15 +194,6 @@ class InventarioController extends Controller
 
     }
 
-    //FUNCIONA PARA LA CONVERSION
-    public function conversion($cod_producto){
-
-        $productos=Productos::find($cod_producto);
-
-        return $productos->unidad_conversion;
-
-
-    }
 
     public function impedir($almacen){
 
@@ -303,6 +296,8 @@ class InventarioController extends Controller
 
            $ultimo=$inicializador->last();
 
+           $conversion=$this->conversion($request->id_producto);
+
 
         $inventario=Inventario::find($request->id);
         $inventario->concepto='Saldo Inicial';
@@ -317,6 +312,9 @@ class InventarioController extends Controller
         $inventario->nombre=$user->name;
         $inventario->id_conteo=$ultimo->id;
         $inventario->conteo=$ultimo->contador;
+        $inventario->conversion_unidad=($conversion*$request->stock_master)+$request->stock_unidades;
+        $inventario->fecha_vencimiento=$request->fecha_vencimiento;
+        $inventario->observacion=$request->observacion;
         $inventario->save();
 
         return response()->json($inventario);
@@ -325,6 +323,16 @@ class InventarioController extends Controller
 
 
 
+
+
+    }
+
+
+    //FUNCIONA PARA LA CONVERSION
+    public function conversion($cod_producto){
+
+        $productos=Productos::find($cod_producto);
+        return $productos->unidad_conversion;
 
 
     }

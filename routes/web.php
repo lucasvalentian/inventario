@@ -42,5 +42,5 @@ Route::post('conteo/crear','ConteoController@crear');
 Route::resource('conteo','ConteoController');
 
 //RESUMENDE INVENTARIO
-
+Route::get('resumen/conteo/{id}', 'ResumenConteoController@conteo');
 Route::resource('resumen','ResumenConteoController');

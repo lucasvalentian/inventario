@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use App\Resumen_conteo;
 use Illuminate\Support\Facades\Auth;
 use App\Productos;
+use App\Almacen;
+use App\Conteo;
 
 class ResumenConteoController extends Controller
 {
@@ -25,6 +27,17 @@ class ResumenConteoController extends Controller
         //
 
         return view('resumen.index');
+    }
+
+    public function conteo($cod_almacen){
+
+        $conteo=Conteo::where('id_almacen','=',$cod_almacen)
+        ->get();
+
+
+        return response()->json($conteo);
+
+
     }
 
     /**

@@ -249,10 +249,15 @@ $("#nextBtn").on("click",function(){
             var stock_unidades=$("#cantidad_minima").val();
             var stock_master=$("#cantidad_master").val();
 
+            var fecha_vencimiento=$("#fecha_vencimiento").val();
+            var observacion=$("#observacion").val();
+
             frm.append("_token", csrf);
             frm.append("id_producto", id_producto);
             frm.append("stock_unidades", stock_unidades);
             frm.append("stock_master", stock_master);
+            frm.append("fecha_vencimiento", fecha_vencimiento);
+            frm.append("observacion", observacion);
 
             $.ajax({
                 type: "POST",

@@ -138,11 +138,13 @@
                                 <!--<div id="qr-reader" style="width: 600px"></div>
                                 <p><input type="text" class="form-control" id="captura"></p>-->
                                 <p><label for="">Empaque Master</label><input placeholder="Empq. Mast." disabled id="empaque"  name="email"></p>
-                                 <p><label for="">Cantidad Master</label><strong style="color:red"> (Campo Obligatorio(*))</strong><input placeholder="Cantidad en Master" value="0"  id="cantidad_master" class="obligatorio" name="phone"></p>
+                                 <p><label for="">Cantidad Master</label><strong style="color:red"> (Campo Obligatorio(*))</strong><input placeholder="Cantidad en Master" type="number" value="0"  id="cantidad_master" class="obligatorio" name="phone"></p>
                                <div id="ocultar">
                                <p><label for="">Unidad de Venta</label><input placeholder="Unidad de Medida" disabled id="unidad_minima"  name="email"></p>
-                                <p><label for="">Cantidad en Unidades </label><strong style="color:red">(Campo Obligatorio(*))</strong><input placeholder="Cantidad en Unidades" value="0" id="cantidad_minima" class="obligatorio"  name="email"></p>
+                                <p><label for="">Cantidad en Unidades </label><strong style="color:red">(Campo Obligatorio(*))</strong><input placeholder="Cantidad en Unidades" type="number" value="0" id="cantidad_minima" class="obligatorio"  name="email"></p>
                                 </div>
+                                <p><label for="">Fecha Vencimiento</label><input type="date" id="fecha_vencimiento"></p>
+                                <p><label for="">Observacion</label><input type="text" id="observacion"></p>
 
                                  <div style="float:right;"> <button type="button" id="nextBtn">Guardar</button> </div>
 
