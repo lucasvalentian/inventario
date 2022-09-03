@@ -91,6 +91,7 @@ function inventariado(){
         let contenido="";
         for (var i = 0; i < data.length; i++) {
             contenido += "<tr>";
+            contenido += "<td style='padding:1px;text-align:center' id='codigo"+data[i].id+"'>" + data[i].conteo  + "</td>";
             contenido += "<td style='padding:1px;text-align:center' id='codigo"+data[i].id+"'>" + data[i].almacen  + "</td>";
             contenido += "<td style='padding:1px;text-align:center' id='producto"+data[i].id+"'>" + data[i].codart  + "</td>";
             contenido += "<td style='padding:1px;text-align:center' id='producto"+data[i].id+"'>" + data[i].producto  + "</td>";

@@ -40,3 +40,7 @@ Route::get('conteo/conexion/{id}', 'ConteoController@conexion');
 Route::post('conteo/modificar','ConteoController@update');
 Route::post('conteo/crear','ConteoController@crear');
 Route::resource('conteo','ConteoController');
+
+//RESUMENDE INVENTARIO
+
+Route::resource('resumen','ResumenConteoController');

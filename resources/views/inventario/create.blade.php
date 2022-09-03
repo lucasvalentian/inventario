@@ -2,7 +2,7 @@
 
 
 @section('title')
-  Usuarios
+  Crear Inventario
 @endsection
 
 @section('style')
@@ -138,7 +138,7 @@
                                 <!--<div id="qr-reader" style="width: 600px"></div>
                                 <p><input type="text" class="form-control" id="captura"></p>-->
                                 <p><label for="">Empaque Master</label><input placeholder="Empq. Mast." disabled id="empaque"  name="email"></p>
-                                 <p><label for="">Cantidad Master</label><strong style="color:red"> (Campo Obligatorio(*))</strong><input placeholder="Cantidad en Master" id="cantidad_master" class="obligatorio" name="phone"></p>
+                                 <p><label for="">Cantidad Master</label><strong style="color:red"> (Campo Obligatorio(*))</strong><input placeholder="Cantidad en Master" value="0"  id="cantidad_master" class="obligatorio" name="phone"></p>
                                <div id="ocultar">
                                <p><label for="">Unidad de Venta</label><input placeholder="Unidad de Medida" disabled id="unidad_minima"  name="email"></p>
                                 <p><label for="">Cantidad en Unidades </label><strong style="color:red">(Campo Obligatorio(*))</strong><input placeholder="Cantidad en Unidades" value="0" id="cantidad_minima" class="obligatorio"  name="email"></p>

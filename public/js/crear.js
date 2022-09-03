@@ -263,7 +263,7 @@ $("#nextBtn").on("click",function(){
                 processData: false,
                 success: function (data) {
 
-                    console.log(data);
+                    //console.log(data);
 
                     if(data=="error")
                     {
@@ -288,7 +288,7 @@ $("#nextBtn").on("click",function(){
                     else{
 
                         console.log(data);
-                    location.href =urlgeeneral+"/inventario";
+                        location.href =urlgeeneral+"/inventario";
 
 
                         Swal.fire({

@@ -2,7 +2,7 @@
 
 
 @section('title')
-  Usuarios
+  Inventario
 @endsection
 
 @section('style')
@@ -83,6 +83,7 @@
                         <table id="dataTableExample" class="table">
                             <thead>
                                 <tr>
+                                    <th>N° Conteo</th>
                                     <th>Almancen</th>
                                     <th>Codigo Economysa</th>
                                     <th>Producto</th>

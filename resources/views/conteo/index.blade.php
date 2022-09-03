@@ -2,7 +2,7 @@
 
 
 @section('title')
-  Usuarios
+  Conteo
 @endsection
 
 @section('style')

@@ -43,7 +43,7 @@ class InventarioController extends Controller
             ->join('productos as p','p.id','=','i.id_producto')
             ->join('almacen as al','al.id','=','i.id_almacen')
             ->select('i.id','al.id as id_almacen','al.almacen','p.producto','p.codigo_barras','p.undpresenta','i.stock_unidades','p.empaquevta',
-                'i.stock_master','i.fecha_prevista','i.hora','p.codart')
+                'i.stock_master','i.fecha_prevista','i.hora','p.codart','i.conteo')
             ->where('i.id_usuario','=',$user->id)
             ->get();
 
@@ -142,6 +142,8 @@ class InventarioController extends Controller
 
            $conversion=$this->conversion($request->id_producto);
 
+           //return response()->json($conversion);
+
 
           if($info==1){
 
@@ -168,13 +170,18 @@ class InventarioController extends Controller
             $inventario->id_conteo=$ultimo->id;
             $inventario->conteo=$ultimo->contador;
             $inventario->conversion_unidad=($conversion*$request->stock_master)+$request->stock_unidades;
+
+
+
+           // print_r('');exit();
+
             $inventario->save();
 
-            //print_r('');exit();
-
-           return response()->json('OK');
+            //
 
 
+
+            return response()->json('ok');
 
           }
 
@@ -188,7 +195,7 @@ class InventarioController extends Controller
     //FUNCIONA PARA LA CONVERSION
     public function conversion($cod_producto){
 
-        $productos=Productos::find($cod_producto)->first();
+        $productos=Productos::find($cod_producto);
 
         return $productos->unidad_conversion;
 
