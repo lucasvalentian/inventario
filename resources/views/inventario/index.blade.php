@@ -34,6 +34,33 @@
 
                 <a href="{{url('inventario/create')}}" type="button" class="btn btn-success waves-effect btn-label waves-light" ><i class="bx bx-plus label-icon"></i> Agregar</a>
 
+                <div class="table-responsive">
+                        <table id="dataTableExample" class="table">
+                            <thead>
+                                <tr>
+                                    <th>N° Conteo</th>
+                                    <th>Almancen</th>
+                                    <th>Codigo Economysa</th>
+                                    <th>Producto</th>
+                                    <th>Codio Barras</th>
+                                    <th>Unidad venta</th>
+                                    <th>Cantidad Unidades Contadas</th>
+                                    <th>Unidad Master</th>
+                                    <th>Cantidad Master Contadas</th>
+                                    <th>Fecha/Hora</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productos">
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
 
                     <!--<div class="container mt-5">
     <div class="row d-flex justify-content-center align-items-center">
@@ -79,33 +106,6 @@
         </div>
     </div>-->
 </div>
-<div class="table-responsive">
-                        <table id="dataTableExample" class="table">
-                            <thead>
-                                <tr>
-                                    <th>N° Conteo</th>
-                                    <th>Almancen</th>
-                                    <th>Codigo Economysa</th>
-                                    <th>Producto</th>
-                                    <th>Codio Barras</th>
-                                    <th>Unidad venta</th>
-                                    <th>Cantidad Unidades Contadas</th>
-                                    <th>Unidad Master</th>
-                                    <th>Cantidad Master Contadas</th>
-                                    <th>Fecha/Hora</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody id="productos">
-                            </tbody>
-                        </table>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
