@@ -112,7 +112,7 @@
                                             <span class="checkmark"></span>
                                     </label>
                                     <p><input type="text" placeholder="Busqueda" id="busquedad" oninput="this.className = ''" name="Busqueda"></p>
-                                    <p><input type="text" placeholder="Codigo de Barras" id="barrar" oninput="this.className = ''" name="barrar">
+                                    <p><input type="number" placeholder="Codigo de Barras" id="barrar" oninput="this.className = ''" name="barrar">
                                     <br><br>
                                     <button id="buscode">Buscar</button>
 
