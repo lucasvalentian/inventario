@@ -148,6 +148,10 @@ class InventarioController extends Controller
             return response()->json('error');
 
 
+          }else if($info==4){
+
+            return response()->json('dos');
+
           }else{
 
             $inventario=new Inventario;

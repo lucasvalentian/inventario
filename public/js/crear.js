@@ -274,7 +274,18 @@ $("#nextBtn").on("click",function(){
                                 footer: ''
                             })
 
-                    }else{
+                    }else if(data=="dos"){
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'No podemos registrar el stock porque aun no se inicializo el conteo!',
+                            footer: ''
+                        })
+
+                    }
+
+                    else{
 
                         console.log(data);
                     location.href =urlgeeneral+"/inventario";
