@@ -66,7 +66,8 @@ class ResumenConteoController extends Controller
                 //$resumen->conteo=$num_fir;
                 $resumen->id_producto=$can->id_productos;
                 $resumen->total_unidades=$can->suma_unidades;
-                $resumen->llave='';
+                $resumen->llave='conteo número '.$num_fir.' y conteo numero '.$num_two;
+                $resumen->diferencia=$can->suma_unidades-$monto;
 
             if($monto==$can->suma_unidades){
 

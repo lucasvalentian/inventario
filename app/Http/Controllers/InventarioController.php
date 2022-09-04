@@ -47,6 +47,8 @@ class InventarioController extends Controller
 
 
             $user = Auth::user();
+
+
             $productos=DB::table('inventario as i')
             ->join('productos as p','p.id','=','i.id_producto')
             ->join('almacen as al','al.id','=','i.id_almacen')
@@ -54,6 +56,7 @@ class InventarioController extends Controller
                 'i.stock_master','i.fecha_prevista','i.hora','p.codart','i.conteo')
             ->where('i.id_usuario','=',$user->id)
             //->where('i.conteo','=',2)
+            ->where('al.id','=',$user->id_almacen)
             ->get();
 
             return response()->json($productos);
